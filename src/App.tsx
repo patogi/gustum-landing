@@ -85,9 +85,12 @@ function Header() {
   return (
     <header className="sticky top-0 z-30 backdrop-blur-md bg-background/85 border-b border-border">
       <nav className="mx-auto max-w-6xl px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
-        <a href="#top" className="font-display text-2xl tracking-tight text-espresso leading-none">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="font-display text-2xl tracking-tight text-espresso leading-none"
+        >
           Gustum<span className="text-clay">.</span>
-        </a>
+        </button>
         <ul className="hidden sm:flex items-center gap-8 text-sm text-muted-foreground">
           <li>
             <a href="#brands" className="hover:text-espresso transition-colors">
@@ -109,7 +112,7 @@ function Brands() {
   return (
     <section id="brands" className="relative pt-6 sm:pt-8 pb-6 sm:pb-8">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div id="top" className="max-w-3xl mb-6 sm:mb-8">
+        <div className="max-w-3xl mb-6 sm:mb-8">
           <div className="text-xs uppercase tracking-[0.2em] text-clay">{copy.intro.eyebrow}</div>
           <h1 className="sr-only">{copy.siteTitle}</h1>
         </div>
