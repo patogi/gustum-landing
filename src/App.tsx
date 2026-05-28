@@ -124,8 +124,14 @@ function Brands() {
             return (
               <article
                 key={meta.id}
-                className="group relative bg-card rounded-md overflow-hidden border border-border flex flex-col"
+                className="group relative bg-card rounded-md overflow-hidden border border-border flex flex-col transition-shadow duration-300 hover:shadow-lg"
               >
+                <a
+                  href={meta.href}
+                  {...(meta.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="absolute inset-0 z-10"
+                  aria-label={brand.name}
+                />
                 <div className="h-44 sm:h-52 flex items-center justify-center px-6 border-b border-border bg-card">
                   <img src={meta.logo} alt={`${brand.name} logo`} className={meta.logoClass} />
                 </div>
@@ -149,16 +155,12 @@ function Brands() {
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                     {brand.description}
                   </p>
-                  <a
-                    href={meta.href}
-                    {...(meta.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="mt-auto inline-flex items-center justify-between gap-2 self-stretch border-t border-border pt-4 text-sm font-medium text-espresso hover:text-clay transition-colors"
-                  >
+                  <div className="mt-auto inline-flex items-center justify-between gap-2 self-stretch border-t border-border pt-4 text-sm font-medium text-espresso">
                     <span>{brand.cta}</span>
                     <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
                       {meta.external ? "↗" : "→"}
                     </span>
-                  </a>
+                  </div>
                 </div>
               </article>
             );
