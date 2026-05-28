@@ -315,9 +315,9 @@ function Footer() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-dvh flex flex-col bg-background text-foreground">
       <Header />
-      <main>
+      <main className="flex-1">
         <Brands />
         <Contact />
       </main>
