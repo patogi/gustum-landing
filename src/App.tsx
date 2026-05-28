@@ -85,12 +85,9 @@ function Header() {
   return (
     <header className="sticky top-0 z-30 backdrop-blur-md bg-background/85 border-b border-border">
       <nav className="mx-auto max-w-6xl px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-display text-2xl tracking-tight text-espresso leading-none"
-        >
+        <a href="/" className="font-display text-2xl tracking-tight text-espresso leading-none">
           Gustum<span className="text-clay">.</span>
-        </button>
+        </a>
         <ul className="hidden sm:flex items-center gap-8 text-sm text-muted-foreground">
           <li>
             <a href="#brands" className="hover:text-espresso transition-colors">
