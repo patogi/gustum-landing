@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { createContext, useContext, useEffect, useState } from "react";
-import crustumLogo from "@/assets/crustum-logo.svg";
+
 import cofmosLogo from "@/assets/cofmos-logo.png";
-import gustumLogo from "@/assets/gustum-logo.jpg";
-import crustumPhoto from "@/assets/crustum.jpg";
 import cofmosPhoto from "@/assets/cofmos.jpg";
+import crustumLogo from "@/assets/crustum-logo.svg";
+import crustumPhoto from "@/assets/crustum.jpg";
+import gustumLogo from "@/assets/gustum-logo.jpg";
 import gustumPhoto from "@/assets/gustum.jpg";
 
 type Lang = "lt" | "en";
@@ -13,20 +13,8 @@ const translations = {
   lt: {
     htmlLang: "lt",
     siteTitle: "Gustum UAB — Crustum, COFMOS ir Gustum kepykla",
-    siteDesc:
-      "Gustum UAB — Vilniaus kontroliuojančioji bendrovė, vienijanti tris maisto ir gėrimų prekės ženklus: Crustum, COFMOS Coffee Roasters ir Gustum B2B kepyklą.",
     nav: { brands: "Prekės ženklai", contact: "Kontaktai" },
-    intro: {
-      eyebrow: "Gustum UAB · Vilnius",
-      h1: "Kontroliuojančioji bendrovė, vienijanti tris maisto ir gėrimų prekės ženklus.",
-      lead: "Trys nepriklausomi prekės ženklai — viena infrastruktūra. Boutique kepyklų tinklas, specialty kavos skrudykla ir didmeninė kepykla, aptarnaujanti B2B klientus visoje Lietuvoje.",
-      cta: "Mūsų prekės ženklai",
-    },
-    brandsSection: {
-      eyebrow: "Portfelis",
-      h2: "Trys verslo linijos.",
-      sub: "Kiekvienas prekės ženklas — savarankiškas verslas su savo komanda, klientais ir kanalais. Kartu jie sudaro vertikaliai integruotą maisto ir gėrimų grupę.",
-    },
+    intro: { eyebrow: "Gustum UAB · Vilnius" },
     brands: [
       {
         kicker: "Kepyklėlių tinklas",
@@ -49,7 +37,6 @@ const translations = {
           "Pramoninių pajėgumų kepykla, vykdanti didmeninius užsakymus B2B klientams — viešbučiams, restoranams, mažmenos tinklams ir įmonėms.",
         cta: "Susisiekti dėl pasiūlymo",
       },
-
     ],
     contact: {
       eyebrow: "Kontaktai",
@@ -61,7 +48,8 @@ const translations = {
       addressValue: "Dūmų g. 1, LT-11119 Vilnius, Lietuva",
     },
     footer: {
-      tagline: "Kontroliuojančioji bendrovė, vienijanti Crustum, COFMOS Coffee Roasters ir Gustum kepyklą.",
+      tagline:
+        "Kontroliuojančioji bendrovė, vienijanti Crustum, COFMOS Coffee Roasters ir Gustum kepyklą.",
       brands: "Prekės ženklai",
       contact: "Kontaktai",
       company: "Įmonė",
@@ -74,20 +62,8 @@ const translations = {
   en: {
     htmlLang: "en",
     siteTitle: "Gustum UAB — Crustum, COFMOS & Gustum Bakery",
-    siteDesc:
-      "Gustum UAB is a Vilnius-based holding company operating three food & beverage brands: Crustum bakery-cafes, COFMOS Coffee Roasters and Gustum B2B bakery.",
     nav: { brands: "Brands", contact: "Contact" },
-    intro: {
-      eyebrow: "Gustum UAB · Vilnius",
-      h1: "A holding company operating three food & beverage brands.",
-      lead: "Three independent brands — one shared infrastructure. A bakery-café chain, a specialty coffee roastery and a wholesale bakery serving B2B customers across Lithuania.",
-      cta: "View our brands",
-    },
-    brandsSection: {
-      eyebrow: "Portfolio",
-      h2: "Three business lines.",
-      sub: "Each brand operates as a standalone business with its own team, customers and channels. Together they form a vertically integrated food & beverage group.",
-    },
+    intro: { eyebrow: "Gustum UAB · Vilnius" },
     brands: [
       {
         kicker: "Bakery-café chain",
@@ -133,58 +109,6 @@ const translations = {
   },
 } as const;
 
-const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void } | null>(null);
-const useLang = () => {
-  const ctx = useContext(LangContext);
-  if (!ctx) throw new Error("LangContext missing");
-  return ctx;
-};
-const useT = () => translations[useLang().lang];
-
-export const Route = createFileRoute("/")({
-  component: Index,
-  head: () => ({
-    meta: [
-      { title: translations.lt.siteTitle },
-      { name: "description", content: translations.lt.siteDesc },
-      { property: "og:title", content: translations.lt.siteTitle },
-      { property: "og:description", content: translations.lt.siteDesc },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Gustum UAB",
-          url: "/",
-          email: "info@gustum.lt",
-          telephone: "+370 630 09901",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Dūmų g. 1",
-            postalCode: "LT-11119",
-            addressLocality: "Vilnius",
-            addressCountry: "LT",
-          },
-          taxID: "LT100006875614",
-          vatID: "LT100006875614",
-          identifier: "302780146",
-          subOrganization: [
-            { "@type": "Organization", name: "Crustum", url: "https://www.crustum.lt/" },
-            { "@type": "Organization", name: "COFMOS Coffee Roasters", url: "https://cofmos.lt/" },
-            { "@type": "Organization", name: "Gustum Bakery" },
-          ],
-        }),
-      },
-    ],
-  }),
-});
-
 const brandMeta = [
   {
     id: "crustum",
@@ -212,8 +136,21 @@ const brandMeta = [
   },
 ];
 
+const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void } | null>(null);
+
+function useLang() {
+  const ctx = useContext(LangContext);
+  if (!ctx) throw new Error("LangContext missing");
+  return ctx;
+}
+
+function useT() {
+  return translations[useLang().lang];
+}
+
 function LangToggle() {
   const { lang, setLang } = useLang();
+
   return (
     <div className="inline-flex items-center rounded-sm border border-border bg-card p-0.5 text-xs font-medium">
       {(["lt", "en"] as const).map((l) => (
@@ -235,6 +172,7 @@ function LangToggle() {
 
 function Header() {
   const t = useT();
+
   return (
     <header className="sticky top-0 z-30 backdrop-blur-md bg-background/85 border-b border-border">
       <nav className="mx-auto max-w-6xl px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
@@ -263,6 +201,7 @@ function Header() {
 
 function Brands() {
   const t = useT();
+
   return (
     <section id="brands" className="relative pt-6 sm:pt-8 pb-6 sm:pb-8">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -273,6 +212,7 @@ function Brands() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {t.brands.map((b, i) => {
             const meta = brandMeta[i];
+
             return (
               <article
                 key={meta.id}
@@ -291,12 +231,16 @@ function Brands() {
                 </div>
                 <div className="p-6 sm:p-7 flex flex-col flex-1">
                   <div className="flex items-baseline justify-between gap-4 mb-4">
-                    <span className="text-[11px] uppercase tracking-[0.2em] text-clay">{b.kicker}</span>
+                    <span className="text-[11px] uppercase tracking-[0.2em] text-clay">
+                      {b.kicker}
+                    </span>
                     <span className="text-[11px] text-muted-foreground tabular-nums">
                       0{i + 1}/0{t.brands.length}
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">{b.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    {b.description}
+                  </p>
                   <a
                     href={meta.href}
                     {...(meta.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
@@ -319,12 +263,17 @@ function Brands() {
 
 function Contact() {
   const t = useT();
+
   return (
     <section id="contact" className="py-8 sm:py-10 bg-butter/50 border-y border-border">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 grid md:grid-cols-2 gap-12 items-start">
         <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-clay mb-4">{t.contact.eyebrow}</div>
-          <h2 className="font-display text-3xl sm:text-4xl text-espresso leading-tight">{t.contact.h2}</h2>
+          <div className="text-xs uppercase tracking-[0.2em] text-clay mb-4">
+            {t.contact.eyebrow}
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl text-espresso leading-tight">
+            {t.contact.h2}
+          </h2>
           <p className="mt-5 text-muted-foreground max-w-md">{t.contact.lead}</p>
         </div>
         <dl className="space-y-6 text-base">
@@ -342,13 +291,18 @@ function Contact() {
           <div>
             <dt className="text-xs uppercase tracking-[0.2em] text-clay mb-1">{t.contact.phone}</dt>
             <dd>
-              <a href="tel:+37063009901" className="text-espresso hover:text-clay underline-offset-4 hover:underline">
+              <a
+                href="tel:+37063009901"
+                className="text-espresso hover:text-clay underline-offset-4 hover:underline"
+              >
                 +370 630 09901
               </a>
             </dd>
           </div>
           <div>
-            <dt className="text-xs uppercase tracking-[0.2em] text-clay mb-1">{t.contact.address}</dt>
+            <dt className="text-xs uppercase tracking-[0.2em] text-clay mb-1">
+              {t.contact.address}
+            </dt>
             <dd className="text-espresso">{t.contact.addressValue}</dd>
           </div>
         </dl>
@@ -359,6 +313,7 @@ function Contact() {
 
 function Footer() {
   const t = useT();
+
   return (
     <footer className="bg-espresso text-cream/90">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 pt-8 pb-10">
@@ -367,10 +322,14 @@ function Footer() {
             <div className="font-display text-2xl text-cream">
               Gustum<span className="text-clay">.</span>
             </div>
-            <p className="mt-3 text-cream/70 max-w-sm leading-relaxed text-sm">{t.footer.tagline}</p>
+            <p className="mt-3 text-cream/70 max-w-sm leading-relaxed text-sm">
+              {t.footer.tagline}
+            </p>
           </div>
           <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-cream/60 mb-3">{t.footer.brands}</div>
+            <div className="text-xs uppercase tracking-[0.2em] text-cream/60 mb-3">
+              {t.footer.brands}
+            </div>
             <ul className="space-y-2 text-sm">
               <li>
                 <a
@@ -400,7 +359,9 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-cream/60 mb-3">{t.footer.contact}</div>
+            <div className="text-xs uppercase tracking-[0.2em] text-cream/60 mb-3">
+              {t.footer.contact}
+            </div>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="mailto:info@gustum.lt" className="hover:text-clay transition-colors">
@@ -444,24 +405,22 @@ function Footer() {
   );
 }
 
-function Index() {
+export default function App() {
   const [lang, setLangState] = useState<Lang>("lt");
 
   useEffect(() => {
-    const stored = typeof window !== "undefined" ? (localStorage.getItem("gustum-lang") as Lang | null) : null;
+    const stored = localStorage.getItem("gustum-lang") as Lang | null;
     if (stored === "lt" || stored === "en") setLangState(stored);
   }, []);
 
   const setLang = (l: Lang) => {
     setLangState(l);
-    if (typeof window !== "undefined") localStorage.setItem("gustum-lang", l);
+    localStorage.setItem("gustum-lang", l);
   };
 
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = translations[lang].htmlLang;
-      document.title = translations[lang].siteTitle;
-    }
+    document.documentElement.lang = translations[lang].htmlLang;
+    document.title = translations[lang].siteTitle;
   }, [lang]);
 
   return (

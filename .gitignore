@@ -18,10 +18,6 @@ dist-ssr/
 .tanstack/
 .nitro/
 
-# Local package-manager artifacts
-# This project uses bun.lock; avoid committing npm lockfiles from ad hoc npm installs.
-package-lock.json
-
 # Environment overrides
 *.local
 
