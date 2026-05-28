@@ -112,10 +112,7 @@ function Brands() {
   return (
     <section id="brands" className="relative pt-6 sm:pt-8 pb-6 sm:pb-8">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="max-w-3xl mb-6 sm:mb-8">
-          <div className="text-xs uppercase tracking-[0.2em] text-clay">{copy.intro.eyebrow}</div>
-          <h1 className="sr-only">{copy.siteTitle}</h1>
-        </div>
+        <h1 className="sr-only">{copy.siteTitle}</h1>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {copy.brands.map((brand, i) => {
