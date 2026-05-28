@@ -9,10 +9,10 @@ const template = await readFile(templatePath, "utf8");
 const { render } = await import(serverEntryPath);
 const appHtml = render();
 
-const html = template
-  .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
-  .replaceAll('href="/assets/', 'href="./assets/')
-  .replaceAll('src="/assets/', 'src="./assets/');
+const html = template.replace(
+  '<div id="root"></div>',
+  `<div id="root">${appHtml}</div>`,
+);
 
 await writeFile(templatePath, html);
 await rm(resolve(distDir, "server"), { recursive: true, force: true });
